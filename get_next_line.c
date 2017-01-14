@@ -5,7 +5,7 @@
 ** Login   <james.clerc@epitech.net>
 ** 
 ** Started on  Thu Jan 12 15:40:43 2017 james clerc
-** Last update Sat Jan 14 13:53:02 2017 james clerc
+** Last update Sat Jan 14 16:57:44 2017 james clerc
 */
 
 #include "get_next_line.h"
@@ -52,11 +52,13 @@ char	*get_next_line(const int fd)
   char	*ret;
   int	size_of_malloc;
 
-  if (fd == -1)
+  if (fd == -1 || READ_SIZE <= 0)
     return (NULL);
   size_of_malloc = 100000;
   comp = 0;
   ret = malloc(sizeof(char) * size_of_malloc);
+  if (ret == NULL)
+    return (NULL);
   while (readd != 0  && save[taille] != '\n')
     {
       condition_read(fd, &readd, &taille, save);
@@ -68,4 +70,3 @@ char	*get_next_line(const int fd)
   else
     return (ret);
 }
-
