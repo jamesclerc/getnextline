@@ -5,14 +5,19 @@
 ** Login   <james.clerc@epitech.net>
 ** 
 ** Started on  Thu Jan 12 15:40:43 2017 james clerc
-** Last update Sat Jan 14 13:36:11 2017 james clerc
+** Last update Sat Jan 14 13:53:02 2017 james clerc
 */
 
 #include "get_next_line.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 void	condition_read(int fd, int *readd, int *taille, char *save)
 {
-  if (*readd <= *i)
+  if (*readd <= *taille)
     {
       *readd = read(fd, save, READ_SIZE);
       *taille = 0;
@@ -21,7 +26,7 @@ void	condition_read(int fd, int *readd, int *taille, char *save)
 
 void	add_charact(char *ret, char *save, int *taille, int *comp)
 {
-  ret[*comp] = save[*i];
+  ret[*comp] = save[*taille];
   *comp = *comp + 1;
   *taille = *taille + 1;
 }
