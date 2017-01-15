@@ -5,7 +5,7 @@
 ** Login   <james.clerc@epitech.net>
 ** 
 ** Started on  Thu Jan 12 15:40:43 2017 james clerc
-** Last update Sat Jan 14 16:57:44 2017 james clerc
+** Last update Sun Jan 15 17:38:34 2017 james clerc
 */
 
 #include "get_next_line.h"
@@ -59,14 +59,11 @@ char	*get_next_line(const int fd)
   ret = malloc(sizeof(char) * size_of_malloc);
   if (ret == NULL)
     return (NULL);
-  while (readd != 0  && save[taille] != '\n')
+  while (readd != 0 && save[taille] != '\n')
     {
       condition_read(fd, &readd, &taille, save);
       while (readd > taille && save[taille] != '\n')
 	add_charact(ret, save, &taille, &comp);
     }
-  if (end_prog(ret, readd, &taille, comp) == 0)
-    return (NULL);
-  else
-    return (ret);
+  return (end_prog(ret, readd, &taille, comp) == 0 ? NULL : ret);
 }
